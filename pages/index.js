@@ -93,7 +93,10 @@ function LeftRightSections({ currentStory, setCurrentStory, totalPosts, setShowS
 
 function Title({ title }) {
   return (
-    <span className="p-3 text-2xl tracking-wide font-bold text-white w-3/4 text-center">{title}</span>
+    <span className="p-3 text-2xl tracking-wide 
+    font-bold text-white w-3/4 text-center">
+      {title}
+    </span>
   )
 }
 
@@ -111,7 +114,8 @@ function RapplerLink({ data }) {
     return `${link}/${data.slug}`;
   }
   return (
-    <a href={url()} target="blank" className="text-xl flex flex-col items-center text-white absolute bottom-5 font-semibold z-50">
+    <a href={url()} target="blank" className="text-xl flex flex-col 
+    items-center text-white absolute bottom-5 font-semibold z-50">
       <span className="text-3xl animate-bounce">‸</span>
       <span>Link</span>
     </a>
@@ -156,11 +160,6 @@ function Stories({ posts, setShowStories }) {
 
 export default function Home() {
   const [showStories, setShowStories] = useState(false);
-  const placeholders = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  function handleClick() {
-    setShowStories(true)
-  }
-
   const [posts, setPosts] = useState([])
 
   useEffect(async () => {
@@ -171,6 +170,12 @@ export default function Home() {
     });
     setPosts(data)
   }, [])
+
+  const placeholders = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  function handleClick() {
+    setShowStories(true)
+  }
 
   if (!showStories)
     return (
@@ -205,19 +210,3 @@ export default function Home() {
   );
 }
 
-
-// // This function gets called at build time
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts
-//   const res = await fetch('https://us-central1-rapplerinternal.cloudfunctions.net/latest-news')
-//   const posts = await res.json()
-//   posts.map((post, i) => post.index = i)
-
-//   // By returning { props: { posts } }, the Blog component
-//   // will receive `posts` as a prop at build time
-//   return {
-//     props: {
-//       posts,
-//     },
-//   }
-// }
