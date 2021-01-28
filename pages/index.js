@@ -67,7 +67,7 @@ function LeftRightSections({ currentStory, setCurrentStory, totalPosts, setShowS
   }
 
   useEffect(() => {
-    const interval = setInterval(() => right(), 3000);
+    const interval = setInterval(() => right(), 5000);
     return () => {
       clearInterval(interval);
     };
